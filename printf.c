@@ -10,8 +10,9 @@
 int _printf(const char *format, ...)
 {
 
-	int byte_sum = 0, i, l, n;
+	int byte_sum = 0, i, l, m, n;
 	char *s;
+	char *t;
 	char c;
 
 	va_list args;
@@ -24,6 +25,16 @@ int _printf(const char *format, ...)
 		{
 			switch (format[i + 1])
 			{
+			case 'i':
+				m = va_arg(args, int);
+				n = print_lead_oct_hex_int(m);
+				l = int_len(n);
+				t = itoa(n, l);
+				byte_sum += print_str(t);
+				free(t);
+				i += 2;
+				break;
+
 			case 's':
 				s = va_arg(args, char *);
 				byte_sum += print_str(s);
