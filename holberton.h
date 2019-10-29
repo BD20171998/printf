@@ -12,4 +12,10 @@ char *itoa(int n, int l);
 char *reverse(char s[]);
 
 
+#include <stdlib.h>
+#include <stdarg.h>
+#include <unistd.h>
+
+int _printf(const char *format, ...);
+
 #endif
