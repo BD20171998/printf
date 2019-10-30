@@ -13,6 +13,7 @@ _printf copies the given characters and variables, transforms the output and the
 ## requirements
 Need to include the C files listed in the repo as well as the header so printf can properly run using other functions.
 ## Uses
+To print something with values you do not know you will need till later.
 ## output
 prints the entire string given within the doulbe quotes after it has processed all special characters.
 ## examples
