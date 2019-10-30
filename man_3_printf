@@ -1,0 +1,40 @@
+.TH _printf 3 "2019-10-29" "V1.0" "_printf man page"
+
+.SH NAME
+_printf
+
+.SH SYNOPSIS
+#include "holberton.h"
+
+int _printf("Hello World!");
+
+.SH DESCRIPTION
+The function _printf() produces given output to the standard output stream. Data for output can be given by enclosing text within quotes and using special characters such as %i to tell the function. _printf writes the output under a format that specifies how arguments and special characters are to be converted for the output.
+
+.SH FORMAT
+When a string is given, the string is copying every character (excluding %) to the standard output stream. Conversion Specificiers are added by the % sign and end by the conversion specifier, which is a letter. The converion occurs causing the specifiers to be replaced with the correpsonding variables passed in. 
+
+.SH CONVERSION SPECIFIERS
+
+d, i: The int argument is converted to decimal notation. Using i specifies the function to get a varaible and print it of type integer. 
+
+o, u, x, X: The unsigned int argument is converted to unsigned octal (o), unsigned decimal (u), or unsigned hexadecimal (x,X). abcdef are used for (x) while (X) takes ABCDEF.
+
+c: The argument given is converted from an Integer to an unsigned char and the result will be put into the output. 
+
+s: Copies from the variable given all the way to the null byte character ('\0').
+
+.SH RETURN VALUE
+Upon a successful return, this function will return the numbers of chars printed to the screen excluding the NULL byte.
+
+.SH EXAMPLE
+_printf("%i is positive", var);
+
+.SH BUGS
+None
+
+.SH AUTHORS
+Bob Deprizio, Kyle Campbell
+
+.SH SEE ALSO
+printf(3)
