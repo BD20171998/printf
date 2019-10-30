@@ -19,6 +19,12 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
+	if (format == NULL)
+	{
+		va_end(args);
+		return (-1);
+	}
+
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
@@ -62,6 +68,7 @@ int _printf(const char *format, ...)
 				i += 2;
 			}
 		}
+
 		c = format[i];
 		s = &c;
 		write(1, s, 1);
