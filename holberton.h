@@ -4,15 +4,24 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-int _printf(const char *format, ...);
-int print_str(char *s);
-int print_ch(char s);
-int int_len(int n);
-char *itoa(int n, int l);
-char *reverse(char s[]);
+/**
+ * struct helper_funcs - Helper functions and cases
+ * @c: Char for format
+ * @f: Function pointer for helper function to call
+ */
 
-int _atoi(char *s);
-int power(int base, int n);
-int print_lead_oct_hex_int(int m);
+typedef struct helper_funcs
+{
+	char c;
+	int (*f)(va_list);
+} hf;
+
+int _printf(const char *format, ...);
+int print_str(va_list);
+int print_ch(va_list);
+int print_int(va_list);
+int _putchar(char c);
+
+int (*get_format(char s))(va_list);
 
 #endif

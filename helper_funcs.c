@@ -4,82 +4,34 @@
 #include "holberton.h"
 
 /**
- * reverse - Function that reverses an array of characters
- * @s: Char array
- * Return: Char pointer with characters that have been reversed
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-
-char *reverse(char s[])
+int _putchar(char c)
 {
-	int c, i, j, len = 0;
-
-	for (i = 0; s[i]; i++)
-		++len;
-
-	for (i = 0, j = len - 1; i < j; i++, j--)
-	{
-		c = s[i];
-		s[i] = s[j];
-		s[j] = c;
-	}
-
-	return (s);
+	return (write(1, &c, 1));
 }
 
 /**
- * itoa - Function that converts an integer to a string of chars
- * @n: Int to convert
- * @l: Int for length of int to convert
- * Return: Char pointer converted from integer passed
+ * print_int - Prints an integer and retruns number of bytes printed
+ * @argu: va_list input
+ * Return: On number of bytes printed
  */
 
-char *itoa(int n, int l)
+int print_int(va_list argu)
 {
-	char *s;
+	int count = 0, length = 0, j, n;
+	unsigned int base = 1, d, max;
 
-	unsigned int d, max;
-
-	int i, sign;
-
-	sign = n;
-
-	s = malloc(sizeof(char *) * (l + 1));
-
-	if (n < 0)
-		n = -n;
-
-	max = n;
-	d = max;
-
-	i = 0;
-
-	do {
-		s[i++] = (d % 10) + '0';
-	} while (d /= 10);
-
-	if (sign < 0)
-		s[i++] = '-';
-
-	s[i] = '\0';
-
-	return (reverse(s));
-}
-
-/**
- * int_len - Function that returns length of an integer of any size
- * @n: Int passed to function
- * Return: Int for length of number
- */
-
-int int_len(int n)
-{
-	int length = 0;
-	unsigned int  d, max;
+	n = va_arg(argu, int);
 
 	if (n < 0)
 	{
 		n = -n;
-		length++;
+		_putchar('-');
+		count = 1;
 	}
 
 	max = n;
@@ -90,19 +42,40 @@ int int_len(int n)
 		++length;
 	} while (d != 0);
 
-	return (length);
+	count += length;
+
+	for (j = 0; j < length -  1; j++)
+		base = base * 10;
+
+	_putchar('0' + (max / base));
+
+	if (length > 1)
+	{
+		for (j = 0; j < length - 2; j++)
+		{
+			base /= 10;
+			d = max / base;
+			_putchar('0' + d % 10);
+		}
+		_putchar('0' + (max % 10));
+	}
+	return (count);
 }
 
 /**
  * print_ch - Function that prints character to output stream and returns
  * number of bytes printed
- * @s: Char to be printed
+ * @argu: va_list input
  * Return: 1 for size of char
  */
 
-int print_ch(char s)
+int print_ch(va_list argu)
 {
-	write(1, &s, 1);
+	char c;
+
+	c = (char)va_arg(argu, int);
+
+	write(1, &c, 1);
 
 	return (1);
 }
@@ -110,13 +83,24 @@ int print_ch(char s)
 /**
  * print_str - Function that prints a string of charracters to output stream
  * and returns number of bytes printed
- * @s: Char pointer to be printed
+ * @argu: va_list input
  * Return: Int for size of character string passed
  */
 
-int print_str(char *s)
+int print_str(va_list argu)
 {
+	char *s;
+	char *nu = "(null)";
+
 	int count = 0, i;
+
+	s = va_arg(argu, char *);
+
+	if (s == NULL)
+	{
+		write(1, nu, 6);
+		return (6);
+	}
 
 	for (i = 0; s[i]; i++)
 		count++;

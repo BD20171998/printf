@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+#include <stdio.h>
 /**
  * _printf - function that prints different formats of data and
  * returns the number of bytes sent to the output stream
@@ -9,12 +9,7 @@
 
 int _printf(const char *format, ...)
 {
-
-	int byte_sum = 0, i, l, m, n;
-	char *s;
-	char *t;
-	char c;
-
+	int byte_sum = 0, i;
 	va_list args;
 
 	va_start(args, format);
@@ -27,63 +22,29 @@ int _printf(const char *format, ...)
 
 	for (i = 0; format[i]; i++)
 	{
+
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == 'i')
+			if (format[i + 1] == '%')
 			{
-				m = va_arg(args, int);
-				n = print_lead_oct_hex_int(m);
-				l = int_len(n);
-				t = itoa(n, l);
-				byte_sum += print_str(t);
-				free(t);
-				i += 2;
-		        }
-			else if (format[i + 1] == 's')
-			{
-				s = va_arg(args, char *);
-				byte_sum += print_str(s);
-				i += 2;
-		        }
-			else if (format[i + 1] == 'd')
-			{
-				n = va_arg(args, int);
-				l = int_len(n);
-				s = itoa(n, l);
-				byte_sum += print_str(s);
-				free(s);
-				i += 2;
-			}
-			else if (format[i + 1] == 'c')
-			{
-				c = (char) va_arg(args, int);
-				byte_sum += print_ch(c);
-				i += 2;
-			}
-			else if (format[i + 1] == '%')
-			{
-				c = '%';
-				byte_sum += print_ch(c);
-				i += 2;
-			}
-			else if (format[i + 1] == '\0')
-			{
-				va_end(args);
-				return (-1);
-			}
-			else if (format[i + 1] == ' ')
-			{
-				va_end(args);
-				return (-1);
+				_putchar('%');
+				byte_sum++;
+				i++;
+				continue;
 			}
 
+			byte_sum += get_format(format[i + 1])(args);
+			i++;
+			continue;
 		}
 
-		c = format[i];
-		s = &c;
-		write(1, s, 1);
-		byte_sum++;
+		else
+		{
+		       write(1, &format[i], 1);
+		       byte_sum += 1;
+		}
 	}
+
 	va_end(args);
 	return (byte_sum);
 }
