@@ -1,5 +1,5 @@
 #include "holberton.h"
-#include <stdio.h>
+
 /**
  * _printf - function that prints different formats of data and
  * returns the number of bytes sent to the output stream
