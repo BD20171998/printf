@@ -127,17 +127,23 @@ int print_rev_str(va_list argu)
 
 	s = va_arg(argu, char *);
 
-	if (s == NULL)
+	for (i = 0; s[i]; i++)
+		count++;
+
+	t = malloc(sizeof(char) * (count + 1));
+
+	if (s == NULL || t == NULL)
 	{
 		write(1, nu, 6);
 		return (6);
 	}
 
-	t = reverse(s);
+	for (i = 0; s[i]; i++)
+		t[i] = s[i];
 
-	for (i = 0; t[i]; i++)
-		count++;
+	t = reverse(t);
 
 	write(1, t, count);
+	free(t);
 	return (count);
 }

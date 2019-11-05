@@ -6,7 +6,7 @@
  * Return: Char pointer with characters that have been reversed
  */
 
-char *reverse(char s[])
+char *reverse(char *s)
 {
 	int c, i, j, len = 0;
 
