@@ -14,6 +14,7 @@ int (*get_format(char s))(va_list)
 		{'s', print_str},
 		{'i', print_int},
 		{'d', print_int},
+		{'r', print_rev_str},
 		{'\0', NULL}
 	};
 

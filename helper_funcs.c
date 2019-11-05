@@ -109,3 +109,35 @@ int print_str(va_list argu)
 
 	return (count);
 }
+
+/**
+ * print_rev_str - Function that prints a string of charracters to output
+ * stream in reverse and returns number of bytes printed
+ * @argu: va_list input
+ * Return: Int for size of character string passed
+ */
+
+int print_rev_str(va_list argu)
+{
+	char *s;
+	char *t;
+	char *nu = "(null)";
+
+	int count = 0, i;
+
+	s = va_arg(argu, char *);
+
+	if (s == NULL)
+	{
+		write(1, nu, 6);
+		return (6);
+	}
+
+	t = reverse(s);
+
+	for (i = 0; t[i]; i++)
+		count++;
+
+	write(1, t, count);
+	return (count);
+}

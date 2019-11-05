@@ -21,7 +21,9 @@ int print_str(va_list);
 int print_ch(va_list);
 int print_int(va_list);
 int _putchar(char c);
-
+char *reverse(char s[]);
 int (*get_format(char s))(va_list);
+int special_ch(char c);
+int print_rev_str(va_list);
 
 #endif
