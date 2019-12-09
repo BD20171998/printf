@@ -32,8 +32,7 @@ char *reverse(char *s)
 int special_ch(char c)
 {
 	if (c == 'c' || c == 's' || c == 'i' || c == 'd' || c == 'r' ||
-	    c == 'b')
-
+	    c == 'b' || c == 'R')
 		return (1);
 
 	else
@@ -87,4 +86,38 @@ int print_bin(va_list argu)
 	}
 
 	return (count);
+}
+
+/**
+ * print_rot13 - Function that prints a string in the rot13 cipher
+ * @argu: va_list input
+ * Return: Int for size of character string passed
+ */
+
+int print_rot13(va_list argu)
+{
+	char *r;
+	int i;
+
+	r = va_arg(argu, char *);
+
+	for (i = 0; r[i]; i++)
+	{
+		if (r[i] >= 'A' && r[i] <= 'M')
+			_putchar(r[i] + 13);
+
+		else if (r[i] >= 'N' && r[i] <= 'Z')
+			_putchar(r[i] - 13);
+
+		else if (r[i] >= 'a' && r[i] <= 'm')
+			_putchar(r[i] + 13);
+
+		else if (r[i] >= 'n' && r[i] <= 'z')
+			_putchar(r[i] - 13);
+
+		else
+			_putchar(r[i]);
+	}
+
+	return (i);
 }

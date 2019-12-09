@@ -26,5 +26,6 @@ int (*get_format(char s))(va_list);
 int special_ch(char c);
 int print_rev_str(va_list);
 int print_bin(va_list);
+int print_rot13(va_list);
 
 #endif

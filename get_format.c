@@ -16,6 +16,7 @@ int (*get_format(char s))(va_list)
 		{'d', print_int},
 		{'r', print_rev_str},
 		{'b', print_bin},
+		{'R', print_rot13},
 		{'\0', NULL}
 	};
 
