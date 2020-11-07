@@ -35,7 +35,7 @@ What you should learn from this project:
 
 These are all the tasks of this project, the ones that are completed link to the corresponding files.
 
-### [0. I'm not going anywhere. You can print that wherever you want to. I'm here and I'm a Spur for life](./_printf.c)
+### [0. I'm not going anywhere. You can print that wherever you want to. I'm here and I'm a Spur for life](./printf.c)
 
 - Write a function that produces output according to format.
   - Prototype: int \_printf(const char \*format, ...);
@@ -55,7 +55,7 @@ These are all the tasks of this project, the ones that are completed link to the
 
 - Create a man page for your function
 
-### [3. With a face like mine, I do better in print](./print_bases.c)
+### [3. With a face like mine, I do better in print](./helper_funcs2.c)
 
 - Handle the following conversion specifiers:
   - b : the unsigned int argument is converted to binary
@@ -80,12 +80,12 @@ alex@ubuntu:~/c/printf$ ./a.out
 ```
 
 
-### [14. Print is the sharpest and the strongest weapon of our party](./print_custom.c)
+### [14. Print is the sharpest and the strongest weapon of our party](./helper_funcs.c)
 
 - Handle the following custom conversion specifier:
   - r : prints the reversed string
 
-### [15. The flood of print has turned reading into a process of gulping rather than savoring](./print_custom.c)
+### [15. The flood of print has turned reading into a process of gulping rather than savoring](./helper_funcs2.c)
 
 - Handle the following custom conversion specifier:
   - R : prints the rot13'ed string
